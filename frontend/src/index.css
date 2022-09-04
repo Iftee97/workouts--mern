@@ -72,7 +72,7 @@ header a {
   cursor: pointer;
   background: #f1f1f1;
   padding: 6px;
-  border-radius: 50%;
+  /* border-radius: 50%; */
   color: #333;
 }
 
