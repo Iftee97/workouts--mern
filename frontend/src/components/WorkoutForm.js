@@ -17,9 +17,6 @@ const WorkoutForm = () => {
       body: JSON.stringify(workout)
     })
     const json = await response.json()
-    if (!response.ok) {
-      setError(json.error)
-    }
     if (response.ok) {
       setError(null)
       setLoad('')
@@ -27,6 +24,8 @@ const WorkoutForm = () => {
       setTitle('')
       dispatch({ type: 'CREATE_WORKOUT', payload: json })
       console.log('new workout created')
+    } else {
+      setError(json.error)
     }
   }
 
