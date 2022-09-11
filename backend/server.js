@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const app = express()
 const workoutRoutes = require('./routes/workouts')
+const userRoutes = require('./routes/user')
 const mongoose = require('mongoose')
 var cors = require('cors')
 
@@ -30,6 +31,7 @@ app.use((req, res, next) => {
 
 // routes
 app.use('/api/workouts', workoutRoutes)
+app.use('/api/user', userRoutes)
 
 
 // start server
