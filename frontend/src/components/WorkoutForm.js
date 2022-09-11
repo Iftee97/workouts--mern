@@ -18,6 +18,7 @@ const WorkoutForm = () => {
       body: JSON.stringify(workout)
     })
     const json = await response.json()
+
     if (response.ok) {
       setEmptyFields([])
       setError(null)
