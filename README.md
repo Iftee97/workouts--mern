@@ -2,6 +2,6 @@
 
 to start the project:
 
-terminal-1: cd backend -> npm i -> npm run dev
+terminal-1 (backend): cd backend -> npm i -> npm run dev
 
-terminal-2: cd frontend -> npm i -> npm start
+terminal-2 (frontend): cd frontend -> npm i -> npm start
