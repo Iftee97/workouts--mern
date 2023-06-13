@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useWorkoutsContext } from '../hooks/useWorkoutsContext'
 import { useAuthContext } from '../hooks/useAuthContext'
 
@@ -7,21 +7,31 @@ import WorkoutDetails from '../components/WorkoutDetails'
 import WorkoutForm from '../components/WorkoutForm'
 
 const Home = () => {
-  const { workouts, dispatch } = useWorkoutsContext()
   const { user } = useAuthContext()
+  const { workouts, dispatch } = useWorkoutsContext()
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     const fetchWorkouts = async () => {
-      const response = await fetch('/api/workouts', {
-        headers: {
-          'Authorization': `Bearer ${user.token}`
+      try {
+        setLoading(true)
+        const response = await fetch('/api/workouts', {
+          headers: {
+            'Authorization': `Bearer ${user.token}`
+          }
+        })
+        const json = await response.json()
+        if (response.ok) {
+          dispatch({ type: 'SET_WORKOUTS', payload: json })
         }
-      })
-      const json = await response.json()
-      if (response.ok) {
-        dispatch({ type: 'SET_WORKOUTS', payload: json })
+        setLoading(false)
+      } catch (error) {
+        setError(error.message)
+        setLoading(false)
       }
     }
+
     if (user) {
       fetchWorkouts()
     }
@@ -30,9 +40,14 @@ const Home = () => {
   return (
     <div className='home'>
       <div className='workouts'>
-        {workouts && workouts.map((workout) => (
-          <WorkoutDetails key={workout._id} workout={workout} />
-        ))}
+        {loading && !error ? (
+          <p>Loading...</p>
+        ) : (
+          workouts && workouts.map((workout) => (
+            <WorkoutDetails key={workout._id} workout={workout} />
+          ))
+        )}
+        {error && <p>{error}</p>}
       </div>
       <WorkoutForm />
     </div>

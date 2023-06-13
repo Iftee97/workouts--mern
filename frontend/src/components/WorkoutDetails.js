@@ -9,11 +9,10 @@ const WorkoutDetails = ({ workout }) => {
   const { dispatch } = useWorkoutsContext()
   const { user } = useAuthContext()
 
-  const handleClick = async () => {
+  const handleDeleteOnClick = async () => {
     if (!user) {
       return
     }
-
     const response = await fetch(`/api/workouts/${workout._id}`, {
       method: 'DELETE',
       headers: {
@@ -29,11 +28,28 @@ const WorkoutDetails = ({ workout }) => {
 
   return (
     <div className='workout-details'>
-      <h4>{workout.title}</h4>
-      <p><strong>Load (kg): {workout.load}</strong></p>
-      <p><strong>Reps: {workout.load}</strong></p>
-      <p>{formatDistanceToNow(new Date(workout.createdAt), { addSuffix: true })}</p>
-      <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
+      <h4>
+        {workout.title}
+      </h4>
+      <p>
+        <strong>
+          Load (kg): {workout.load}
+        </strong>
+      </p>
+      <p>
+        <strong>
+          Reps: {workout.load}
+        </strong>
+      </p>
+      <p>
+        {formatDistanceToNow(new Date(workout.createdAt), { addSuffix: true })}
+      </p>
+      <span
+        className="material-symbols-outlined"
+        onClick={handleDeleteOnClick}
+      >
+        delete
+      </span>
     </div>
   )
 }
