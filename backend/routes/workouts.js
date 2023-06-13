@@ -10,7 +10,7 @@ const requireAuth = require('../middleware/requireAuth')
 
 const router = express.Router()
 
-router.use(requireAuth) // using the middleware on all workout routes
+router.use(requireAuth) // using the middleware on all workout routes -- server side route guard
 
 // get all workouts
 router.get('/', getWorkouts)
