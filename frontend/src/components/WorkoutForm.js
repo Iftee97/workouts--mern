@@ -37,21 +37,22 @@ const WorkoutForm = () => {
       const json = await response.json()
       console.log('json: >>>>>>>>>', json)
       if (response.ok) {
-        setEmptyFields([])
-        setError(null)
-        setLoad('')
-        setReps('')
-        setTitle('')
         dispatch({ type: 'CREATE_WORKOUT', payload: json })
         console.log('new workout created')
       } else {
         setError(json.error)
         setEmptyFields(json.emptyFields)
       }
-      setLoading(false)
     } catch (error) {
       console.log(error.message)
       setError('Could not create workout. Try again.')
+    } finally {
+      setEmptyFields([])
+      setError(null)
+      setLoad('')
+      setReps('')
+      setTitle('')
+      setLoading(false)
     }
   }
 
