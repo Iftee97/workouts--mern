@@ -10,7 +10,6 @@ import Navbar from './components/Navbar'
 
 const App = () => {
   const { user } = useAuthContext()
-  console.log(process.env.REACT_APP_BACKEND_SERVER_URL)
 
   return (
     <div className="App">
