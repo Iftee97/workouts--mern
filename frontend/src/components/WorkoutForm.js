@@ -26,7 +26,7 @@ const WorkoutForm = () => {
     }
     try {
       setLoading(true)
-      const response = await fetch('/api/workouts', {
+      const response = await fetch('https://workouts-mern.cyclic.app/api/workouts', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${user.token}`,
