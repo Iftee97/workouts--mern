@@ -20,7 +20,7 @@ app.use(express.json()) // checks for data in req.body
 
 app.use(cors({
   // origin: 'http://localhost:3000' || 'http://192.168.0.106:3000' || '*', // development
-  origin: 'https://workouts-mern.cyclic.app' || '*', // production
+  origin: 'https://workouts-mern.vercel.app' || '*', // production
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE']
 }))
 
