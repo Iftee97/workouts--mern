@@ -6,7 +6,6 @@ import { useAuthContext } from '../hooks/useAuthContext'
 const Navbar = () => {
   const { logout, loading, error } = useLogout()
   const { user } = useAuthContext()
-  console.log('user: >>>>>>>>>', user)
 
   return (
     <header>

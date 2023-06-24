@@ -29,8 +29,8 @@ const WorkoutForm = () => {
       const response = await fetch('/api/workouts', {
         method: 'POST',
         headers: {
+          'Authorization': `Bearer ${user.token}`,
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${user.token}`
         },
         body: JSON.stringify(workout)
       })
