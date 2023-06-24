@@ -21,7 +21,7 @@ const Home = () => {
             'Authorization': `Bearer ${user.token}`,
             'Content-Type': 'application/json',
           }
-        })
+        }) // "proxy": "http://localhost:4000", in package.json
         const json = await response.json()
         if (response.ok) {
           dispatch({ type: 'SET_WORKOUTS', payload: json })

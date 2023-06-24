@@ -37,3 +37,10 @@ const App = () => {
 }
 
 export default App
+
+// backend hosted at: https://workouts-mern.cyclic.app
+/*
+in package.json:
+  "proxy": "https://workouts-mern.cyclic.app", // production backend
+  "proxy": "http://localhost:4000", // development backend
+*/
