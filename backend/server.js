@@ -19,7 +19,8 @@ main().catch(err => console.log(err))
 app.use(express.json()) // checks for data in req.body
 
 app.use(cors({
-  origin: 'http://localhost:3000' || 'http://192.168.0.106:3000' || 'https://workouts-mern.vercel.app' || '*',
+  // origin: 'http://localhost:3000' || 'http://192.168.0.106:3000' || '*', // development
+  origin: 'https://workouts-mern.cyclic.app' || '*', // production
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE']
 }))
 
