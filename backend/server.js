@@ -34,6 +34,12 @@ app.use('/api/workouts', workoutRoutes)
 app.use('/api/user', userRoutes)
 
 
+// home route:
+app.get('/', (req, res) => {
+  res.json({ message: 'hello world' })
+})
+
+
 // start server
 app.listen(process.env.PORT, () => {
   console.log(`server listening on port ${process.env.PORT}`)
