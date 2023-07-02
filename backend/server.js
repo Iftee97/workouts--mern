@@ -46,4 +46,4 @@ app.listen(process.env.PORT, () => {
   console.log(`server listening on port ${process.env.PORT}`)
 })
 
-// production server hosted at https://www.cyclic.sh/
+// production server hosted on https://www.cyclic.sh/
